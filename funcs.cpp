@@ -169,3 +169,6 @@ void print_help(char *command_name){
 
 
 //Quick Sort 2 (Assignment)
+std::vector<int> qsort2(std::vector<int>, int low, int high){
+    
+}

@@ -8,3 +8,4 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right);
 std::vector<int> msort(std::vector<int> data);
 std::vector<int> qsort(std::vector<int> list);
 void print_help(char *command_name);
+std::vector<int> qsort2(std::vector<int>, int low, int high);
