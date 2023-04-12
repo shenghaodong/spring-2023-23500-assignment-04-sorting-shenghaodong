@@ -175,8 +175,24 @@ std::vector<int> qsort2(std::vector<int> list, int low, int high){
     return list;
   }
   //Pivot Value + Other Stuff before Recursive Step
-  int pivot = list[list.length()/2];
-  
+  //int low should be 0 and high should be the end of the list during first run
+  //Pivot should be between low and high
+  int pivot = list[high/2];
+  int pivotElement = high/2;
+
+  //Moves Pivot to the End
+  list[pivotElement] = list[high];
+  list[high] = pivot;
+
+  //Move Elements lower than Pivot to the left and higher than pivot to the right
+  int lower, higher; //Use this for the next low and high values
+
+
+  //Loop and split array into 2 partitions. One with all values smaller than the pivot
+  //And another that has values higher than the pivot
+
+  //Now work with the 2 partitions
+
 
   //Recursion Step
   
