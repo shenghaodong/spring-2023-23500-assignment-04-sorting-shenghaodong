@@ -169,6 +169,16 @@ void print_help(char *command_name){
 
 
 //Quick Sort 2 (Assignment)
-std::vector<int> qsort2(std::vector<int>, int low, int high){
-    
+std::vector<int> qsort2(std::vector<int> list, int low, int high){
+  //Base Case
+  if(low == high){
+    return list;
+  }
+  //Pivot Value + Other Stuff before Recursive Step
+  int pivot = list[list.length()/2];
+  
+
+  //Recursion Step
+  
+
 }
