@@ -190,8 +190,11 @@ std::vector<int> qsort2(std::vector<int> list, int low, int high){
 
   //Loop and split array into 2 partitions. One with all values smaller than the pivot
   //And another that has values higher than the pivot
+  for(int i = 0; i <???; i++)
 
   //Now work with the 2 partitions
+  qsort2(); //Lower
+  qsort2(); //higher
 
 
   //Recursion Step
