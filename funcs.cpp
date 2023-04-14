@@ -178,8 +178,7 @@ void qsort2(std::vector<int> &list, int low, int high){
   //int low should be 0 and high should be the end of the list during first run
 
   //Pivot should be between low and high
-  int pivot = list.get(low);
-  std::cout << "test" << std::endl;
+  int pivot = list[low];
 
   // Moves Pivot to the End Might not need this
   int count = 0;
@@ -188,6 +187,7 @@ void qsort2(std::vector<int> &list, int low, int high){
       count++;
     }
   }
+
 
   // Giving pivot element its correct position
   int pivotIndex = low + count;
