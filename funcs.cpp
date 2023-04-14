@@ -179,6 +179,7 @@ void qsort2(std::vector<int> &list, int low, int high){
 
   //Pivot should be between low and high
   int pivot = list[low];
+  int pivotIndex = low;
 
   //Loop and split array into 2 partitions. One with all values smaller than the pivot and another that has values higher than the pivot
   //Need to loop through 2 loops one backwards and one forwards
