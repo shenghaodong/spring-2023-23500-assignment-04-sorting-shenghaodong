@@ -180,21 +180,6 @@ void qsort2(std::vector<int> &list, int low, int high){
   //Pivot should be between low and high
   int pivot = list[low];
 
-  // Moves Pivot to the End Might not need this
-  int count = 0;
-  for (int i = low + 1; i <= high; i++) {
-    if (list[i] <= pivot){
-      count++;
-    }
-  }
-
-
-  // Giving pivot element its correct position
-  int pivotIndex = low + count;
-  std::swap(list[pivotIndex], list[low]);
-
-
-
   //Loop and split array into 2 partitions. One with all values smaller than the pivot and another that has values higher than the pivot
   //Need to loop through 2 loops one backwards and one forwards
   int i = low;
