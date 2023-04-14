@@ -27,10 +27,10 @@ int index_of(int item, int data[], int len){
   return -1;
 }
 
-int find_min_index(std::vector<int> a, int start_index, int stop_index){
-  int min_index = start_index;
+int find_min_index(std::vector<int> a, int low_index, int stop_index){
+  int min_index = low_index;
   int i;
-  for (i = start_index; i < stop_index; i++){
+  for (i = low_index; i < stop_index; i++){
     if (a[i] < a[min_index]){
       min_index = i;
     }
@@ -169,35 +169,50 @@ void print_help(char *command_name){
 
 
 //Quick Sort 2 (Assignment)
-std::vector<int> qsort2(std::vector<int> list, int low, int high){
+void qsort2(std::vector<int> &list, int low, int high){
   //Base Case
-  if(low == high){
-    return list;
+  if(low >= high){
+    return;
   }
   //Pivot Value + Other Stuff before Recursive Step
   //int low should be 0 and high should be the end of the list during first run
+
   //Pivot should be between low and high
-  int pivot = list[high/2];
-  int pivotElement = high/2;
+  int pivot = list.get(low);
+  std::cout << "test" << std::endl;
 
-  //Moves Pivot to the End
-  list[pivotElement] = list[high];
-  list[high] = pivot;
+  // Moves Pivot to the End Might not need this
+  int count = 0;
+  for (int i = low + 1; i <= high; i++) {
+    if (list[i] <= pivot){
+      count++;
+    }
+  }
 
-  //Move Elements lower than Pivot to the left and higher than pivot to the right
-  int lower, higher; //Use this for the next low and high values
+  // Giving pivot element its correct position
+  int pivotIndex = low + count;
+  std::swap(list[pivotIndex], list[low]);
 
 
-  //Loop and split array into 2 partitions. One with all values smaller than the pivot
-  //And another that has values higher than the pivot
-  for(int i = 0; i <???; i++)
 
-  //Now work with the 2 partitions
-  qsort2(); //Lower
-  qsort2(); //higher
+  //Loop and split array into 2 partitions. One with all values smaller than the pivot and another that has values higher than the pivot
+  //Need to loop through 2 loops one backwards and one forwards
+  int i = low;
+  int j = high;
+  while(i < pivotIndex && j > pivotIndex){
+    while(list[i] <= pivot){
+      i++;
+    }
+    while(list[j] > pivot){
+      j--;
+    }
+    if (i < pivotIndex && j > pivotIndex){
+      std::swap(list[i++], list[j--]);
+    }
+  }
 
 
   //Recursion Step
-  
-
+  qsort2(list, low, pivotIndex - 1); //Left
+  qsort2(list, pivotIndex + 1, high); //Right
 }
