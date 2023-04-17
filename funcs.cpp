@@ -181,6 +181,14 @@ void qsort2(std::vector<int> &list, int low, int high){
   int pivot = list[low];
   int pivotIndex = low;
 
+  //Move Pivot to beginning or end
+  //End in this case
+  int temp = list[high];
+  list[high] = pivot;
+  list[pivotIndex] = temp;
+
+
+
   //Loop and split array into 2 partitions. One with all values smaller than the pivot and another that has values higher than the pivot
   //Need to loop through 2 loops one backwards and one forwards
   int i = low;
@@ -192,11 +200,16 @@ void qsort2(std::vector<int> &list, int low, int high){
     while(list[j] > pivot){
       j--;
     }
-    if (i < pivotIndex && j > pivotIndex){
-      std::swap(list[i++], list[j--]);
+    if (list[i] > pivot && list[j] <= pivot){
+      std::swap(list[i], list[j]);
     }
   }
 
+  for(int x = low; x < high + 1; x++){
+    std::cout << list[x] <<  ", ";
+  };
+  std::cout << "\n";
+  
 
   //Recursion Step
   qsort2(list, low, pivotIndex - 1); //Left

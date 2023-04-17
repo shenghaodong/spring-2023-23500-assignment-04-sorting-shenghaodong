@@ -16,7 +16,15 @@ int main(){
         std::cout << runTime.at(j) << ", ";
     }
     //qsort(runTime);
-    std::vector<int> runTest = qsort2(runTime, 0, 14);
+    std::cout << "\n";
+    qsort2(runTime, 0, 14);
+    for(int x = 0; x < 15; x++){
+    std::cout << runTime[x] <<  ", ";
+  };
+
+
+    
+    
     
     return 0;
 }
