@@ -18,7 +18,7 @@ int main(){
     }
     //qsort(runTime);
     std::cout << "\n\n";
-    qsort2(runTime, 0, 15);
+    sortOnce(runTime, 0, 15);
     std::cout << "\n\n";
     std::cout << "Finished Array: ";
     for(int x = 0; x < runTime.size(); x++){
