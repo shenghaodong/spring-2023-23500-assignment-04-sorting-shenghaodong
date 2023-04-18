@@ -239,3 +239,41 @@ void qsort2(std::vector<int> &list, int low, int high){
   //   }
   // }
 }
+void sortOnce(std::vector<int> &list, int low, int high){
+  //Pivot should be between low and high
+  int pivot = list[low];
+  int pivotIndex = low;
+  int lastNum = high;
+
+  //Move Pivot to beginning or end
+  //End in this case
+  
+  std::swap(list[pivotIndex], list[high - 1]);
+  pivotIndex = high - 1;
+  //Moving Pivot to the end works correctly now.
+
+
+  //Swap
+  int i = low;
+  int j = high - 2;
+
+  //When while loop runs J just counts down to -1 for some reason
+  //Fixed after changing while from i!= j to i < j but sort is still broken
+  while(i < j){
+    while(list[i] < pivot){
+      i++;
+    }
+    while(list[j] >= pivot){
+      j--;
+    }
+    if(list[i] >= pivot && list[j] < pivot && i != j){
+      std::swap(list[i], list[j]);
+    }
+  }
+
+
+  //Move Pivot back to correct location
+  pivotIndex = i;
+  std::swap(list[high], list[i]);
+
+}

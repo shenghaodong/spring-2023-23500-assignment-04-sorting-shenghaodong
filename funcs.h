@@ -9,3 +9,4 @@ std::vector<int> msort(std::vector<int> data);
 std::vector<int> qsort(std::vector<int> list);
 void print_help(char *command_name);
 void qsort2(std::vector<int> &list, int low, int high);
+void sortOnce(std::vector<int> &list, int low, int high);
