@@ -180,33 +180,42 @@ void qsort2(std::vector<int> &list, int low, int high){
   //Pivot should be between low and high
   int pivot = list[low];
   int pivotIndex = low;
+  int lastNum = high;
 
   //Move Pivot to beginning or end
   //End in this case
-  int temp = list[high];
-  list[high] = pivot;
-  list[pivotIndex] = temp;
+  
+  std::swap(list[pivotIndex], list[high - 1]);
+  pivotIndex = high - 1;
+  //Moving Pivot to the end works correctly now.
 
 
-
-  //Loop and split array into 2 partitions. One with all values smaller than the pivot and another that has values higher than the pivot
-  //Need to loop through 2 loops one backwards and one forwards
+  //Swap
   int i = low;
-  int j = high;
-  while(i < pivotIndex && j > pivotIndex){
-    while(list[i] <= pivot){
+  int j = high - 2;
+
+  //When while loop runs J just counts down to -1 for some reason
+  //Fixed after changing while from i!= j to i < j but sort is still broken
+  while(i < j){
+    while(list[i] < pivot){
       i++;
     }
-    while(list[j] > pivot){
+    while(list[j] >= pivot){
       j--;
     }
-    if (list[i] > pivot && list[j] <= pivot){
+    if(list[i] >= pivot && list[j] < pivot && i != j){
       std::swap(list[i], list[j]);
     }
   }
 
-  for(int x = low; x < high + 1; x++){
-    std::cout << list[x] <<  ", ";
+  
+
+  //Move Pivot back to correct location
+  pivotIndex = i;
+  std::swap(list[high], list[i]);
+  
+  for(int x = low; x < high; x++){
+    std::cout << list[x] <<  " ";
   };
   std::cout << "\n";
   
@@ -214,4 +223,19 @@ void qsort2(std::vector<int> &list, int low, int high){
   //Recursion Step
   qsort2(list, low, pivotIndex - 1); //Left
   qsort2(list, pivotIndex + 1, high); //Right
+
+
+  //Fix this I don't think it works
+  // while(i < j){
+  //   while(list[i] <= pivot){
+  //     i++;
+  //   }
+  //   while(list[j] > pivot){
+  //     j--;
+  //   }
+  //   if (list[i] > pivot && list[j] <= pivot){
+  //     // std::cout << "RUNS" << std::endl;
+  //     std::swap(list[i], list[j]);
+  //   }
+  // }
 }

@@ -10,21 +10,20 @@
 int main(){
     std::vector<int> runTime;
     for(int i = 0; i < 15; i++){
-        runTime.push_back(rand() % 50 + 1);
+        runTime.push_back(rand() % 9 + 1);
     }
+    std::cout << "Original Array: ";
     for(int j = 0; j < runTime.size(); j++){
-        std::cout << runTime.at(j) << ", ";
+        std::cout << runTime.at(j) << " ";
     }
     //qsort(runTime);
-    std::cout << "\n";
-    qsort2(runTime, 0, 14);
-    for(int x = 0; x < 15; x++){
-    std::cout << runTime[x] <<  ", ";
-  };
+    std::cout << "\n\n";
+    qsort2(runTime, 0, 15);
+    std::cout << "\n\n";
+    std::cout << "Finished Array: ";
+    for(int x = 0; x < runTime.size(); x++){
+        std::cout << runTime.at(x) << " ";
+    }
 
-
-    
-    
-    
     return 0;
 }
