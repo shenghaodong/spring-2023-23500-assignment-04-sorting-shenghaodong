@@ -262,26 +262,28 @@ void sortOnce(std::vector<int> &list, int low, int high){
 
   //As long as low doesn't get higher than high then continue running
   while(i < j){
-    while(list[i] < pivot){
+    while(list[i] < pivot && i < high){
       i++;
     }
     while(list[j] >= pivot && j >= 1){
       j--;
     }
     //Swap
-    if(list[i] >= pivot && list[j] < pivot && i < j){
-      std:: cout << "Swapped: " << "\nIndex I: " << i << "\nNum: " << list[i] << "\nIndex J: " << j << "\nNum: " << list[j] << std::endl;
+    if(list[i] >= pivot && list[j] < pivot && i <= j){
+      //std:: cout << "Swapped: " << "\nIndex I: " << i << "\nNum: " << list[i] << "\nIndex J: " << j << "\nNum: " << list[j] << std::endl;
       std::swap(list[i++], list[j--]);
     }
   }
 
   //Move Pivot back
   pivotIndex = i;
+  if(list[i] > list[high - 1]){
   std::swap(list[i], list[high - 1]);
+  }
 
   //Recurse
-  qsort2(list, low, pivotIndex - 1);
-  qsort2(list, pivotIndex + 1, high);
+  sortOnce(list, low, pivotIndex);
+  sortOnce(list, pivotIndex + 1, high);
 
 
 }
