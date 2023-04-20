@@ -248,8 +248,8 @@ void sortOnce(std::vector<int> &list, int low, int high){
   }
 
   //Set Pivot, It's set as the first index for now (for testing)
-  int pivot = list[low];
-  int pivotIndex = low;
+  int pivot = list[high - 1];
+  int pivotIndex = high - 1;
 
   //Set Pivot to Last Index so we can swap without worrying about it
   std::swap(list[pivotIndex], list[high - 1]);

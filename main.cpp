@@ -9,8 +9,8 @@
 
 int main(){
     std::vector<int> runTime;
-    for(int i = 0; i < 15; i++){
-        runTime.push_back(rand() % 9 + 1);
+    for(int i = 0; i < 25; i++){
+        runTime.push_back(rand() % 20 + 1);
     }
     std::cout << "Original Array: ";
     for(int j = 0; j < runTime.size(); j++){
