@@ -18,12 +18,13 @@ int main(){
     }
     //qsort(runTime);
     std::cout << "\n\n";
-    sortOnce(runTime, 0, 15);
-    std::cout << "\n\n";
+    sortOnce(runTime, 0, runTime.size());
+    std::cout << "\n";
     std::cout << "Finished Array: ";
     for(int x = 0; x < runTime.size(); x++){
         std::cout << runTime.at(x) << " ";
     }
+    std::cout << "\n";
 
     return 0;
 }

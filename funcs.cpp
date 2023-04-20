@@ -240,40 +240,48 @@ void qsort2(std::vector<int> &list, int low, int high){
   // }
 }
 void sortOnce(std::vector<int> &list, int low, int high){
-  //Pivot should be between low and high
+  //Make sure it works for the first step then move to qsort2
+
+  //Base Case
+  if(low >= high){
+    return;
+  }
+
+  //Set Pivot, It's set as the first index for now (for testing)
   int pivot = list[low];
   int pivotIndex = low;
-  int lastNum = high;
 
-  //Move Pivot to beginning or end
-  //End in this case
-  
+  //Set Pivot to Last Index so we can swap without worrying about it
   std::swap(list[pivotIndex], list[high - 1]);
-  pivotIndex = high - 1;
-  //Moving Pivot to the end works correctly now.
+  std::cout << "This is the pivot: " << pivot << std::endl;
 
 
-  //Swap
+  //Set to first and last index for our loop
   int i = low;
   int j = high - 2;
 
-  //When while loop runs J just counts down to -1 for some reason
-  //Fixed after changing while from i!= j to i < j but sort is still broken
+  //As long as low doesn't get higher than high then continue running
   while(i < j){
     while(list[i] < pivot){
       i++;
     }
-    while(list[j] >= pivot){
+    while(list[j] >= pivot && j >= 1){
       j--;
     }
-    if(list[i] >= pivot && list[j] < pivot && i != j){
-      std::swap(list[i], list[j]);
+    //Swap
+    if(list[i] >= pivot && list[j] < pivot && i < j){
+      std:: cout << "Swapped: " << "\nIndex I: " << i << "\nNum: " << list[i] << "\nIndex J: " << j << "\nNum: " << list[j] << std::endl;
+      std::swap(list[i++], list[j--]);
     }
   }
 
-
-  //Move Pivot back to correct location
+  //Move Pivot back
   pivotIndex = i;
-  std::swap(list[high], list[i]);
+  std::swap(list[i], list[high - 1]);
+
+  //Recurse
+  qsort2(list, low, pivotIndex - 1);
+  qsort2(list, pivotIndex + 1, high);
+
 
 }
