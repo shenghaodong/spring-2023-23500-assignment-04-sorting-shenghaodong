@@ -88,6 +88,8 @@ int main(int argc, char *argv[])
     b = qsort(a);
   } else if(algorithm == 'q2'){
     b = qsort2(a);
+  }else if(algorithm == 'd'){
+    b = std::sort(algorithm);
   }
   
 

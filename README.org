@@ -39,4 +39,10 @@ can create a new Makefile or copy and modify one you've used in the past.
 
 
 * Write your comments here:   
-   
+
+At a data set size of 3900 both the quick sort and the built in sort take around 20-30 miliseconds to sort.
+Same thing for a data set of 10000, both take around 150ms.
+
+At a dataset with the size 10000, it took both sorts around 15000. Both the sorts seem to be similar in solve time.
+
+
