@@ -170,76 +170,6 @@ void print_help(char *command_name){
 
 //Quick Sort 2 (Assignment)
 void qsort2(std::vector<int> &list, int low, int high){
-  //Base Case
-  if(low >= high){
-    return;
-  }
-  //Pivot Value + Other Stuff before Recursive Step
-  //int low should be 0 and high should be the end of the list during first run
-
-  //Pivot should be between low and high
-  int pivot = list[low];
-  int pivotIndex = low;
-  int lastNum = high;
-
-  //Move Pivot to beginning or end
-  //End in this case
-  
-  std::swap(list[pivotIndex], list[high - 1]);
-  pivotIndex = high - 1;
-  //Moving Pivot to the end works correctly now.
-
-
-  //Swap
-  int i = low;
-  int j = high - 2;
-
-  //When while loop runs J just counts down to -1 for some reason
-  //Fixed after changing while from i!= j to i < j but sort is still broken
-  while(i < j){
-    while(list[i] < pivot){
-      i++;
-    }
-    while(list[j] >= pivot){
-      j--;
-    }
-    if(list[i] >= pivot && list[j] < pivot && i != j){
-      std::swap(list[i], list[j]);
-    }
-  }
-
-  
-
-  //Move Pivot back to correct location
-  pivotIndex = i;
-  std::swap(list[high], list[i]);
-  
-  for(int x = low; x < high; x++){
-    std::cout << list[x] <<  " ";
-  };
-  std::cout << "\n";
-  
-
-  //Recursion Step
-  qsort2(list, low, pivotIndex - 1); //Left
-  qsort2(list, pivotIndex + 1, high); //Right
-
-
-  //Fix this I don't think it works
-  // while(i < j){
-  //   while(list[i] <= pivot){
-  //     i++;
-  //   }
-  //   while(list[j] > pivot){
-  //     j--;
-  //   }
-  //   if (list[i] > pivot && list[j] <= pivot){
-  //     // std::cout << "RUNS" << std::endl;
-  //     std::swap(list[i], list[j]);
-  //   }
-  // }
-}
-void sortOnce(std::vector<int> &list, int low, int high){
   //Make sure it works for the first step then move to qsort2
 
   //Base Case
@@ -282,8 +212,6 @@ void sortOnce(std::vector<int> &list, int low, int high){
   }
 
   //Recurse
-  sortOnce(list, low, pivotIndex);
-  sortOnce(list, pivotIndex + 1, high);
-
-
+  qsort2(list, low, pivotIndex);
+  qsort2(list, pivotIndex + 1, high);
 }
